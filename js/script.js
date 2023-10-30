@@ -5,7 +5,8 @@ createApp({
         return{
             list:[],
             apiUrl:'php/server.php',
-            newTask: ''
+            newTask: '',
+            isError: false
         }
     },
 
@@ -26,12 +27,19 @@ createApp({
             })
         },
         removeTask(index){
-            const data = new FormData();
-            data.append('taskToDelete', index);
-            axios.post(this.apiUrl, data)
-            .then(res => {
-                this.list = res.data
-            })
+            if(this.list[index].isDo){
+                const data = new FormData();
+                data.append('taskToDelete', index);
+                axios.post(this.apiUrl, data)
+                .then(res => {
+                    this.list = res.data
+                })
+            }else{
+                this.isError = true,
+                setTimeout(()=>{
+                    this.isError = false
+                },2000)
+            }
         }
     },
     mounted(){

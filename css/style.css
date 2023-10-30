@@ -2,3 +2,15 @@ body{
     background-color: slateblue;
     color: white;
 }
+
+li{
+    cursor: pointer;
+}
+
+.do{
+    text-decoration: line-through;
+}
+
+p{
+    color: red;
+}
