@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,8 +22,11 @@
     <div id="app" class="container my-5">
         <h1 class="text-center">To Do List</h1>
 
-        <div class="container">
-            
+        <div class="container my-5">
+            <ul class="list-group">
+                <li v-for="(item, index) in list"
+                class="list-group-item">{{ item }}</li>
+            </ul>
         </div>
 
     </div>
