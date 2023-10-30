@@ -23,7 +23,6 @@
         <h1 class="text-center">To Do List</h1>
         
         <div class="container my-5">
-
             <div class="input-group mb-3">
                 <input 
                 v-model.trim="newTask"
@@ -51,7 +50,8 @@
                 </li>
             </ul>
 
-            <p v-if="isError">Errore! Puoi eliminare solo le task che sono state completate!</p>
+            <p v-if="isErrorDelete">Errore! Puoi eliminare solo le task che sono state completate!</p>
+            <p v-if="isErrorTask">Errore! La task da aggiungere deve avere un nome!</p>
         </div>
 
     </div>

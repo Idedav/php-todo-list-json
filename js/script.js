@@ -6,7 +6,8 @@ createApp({
             list:[],
             apiUrl:'php/server.php',
             newTask: '',
-            isError: false
+            isErrorDelete: false,
+            isErrorTask: false
         }
     },
 
@@ -18,13 +19,20 @@ createApp({
             })
         },
         addTask(){
-            const data = new FormData();
-            data.append('itemTask', this.newTask);
-            axios.post(this.apiUrl, data)
-            .then(res =>{
-                this.list = res.data,
-                this.newTask = ''
-            })
+            if(this.newTask){
+                const data = new FormData();
+                data.append('itemTask', this.newTask);
+                axios.post(this.apiUrl, data)
+                .then(res =>{
+                    this.list = res.data,
+                    this.newTask = ''
+                })
+            }else{
+                this.isErrorTask = true,
+                setTimeout(()=>{
+                    this.isErrorTask = false
+                },3000)
+            }
         },
         removeTask(index){
             if(this.list[index].isDo){
@@ -35,10 +43,10 @@ createApp({
                     this.list = res.data
                 })
             }else{
-                this.isError = true,
+                this.isErrorDelete = true,
                 setTimeout(()=>{
-                    this.isError = false
-                },2000)
+                    this.isErrorDelete = false
+                },3000)
             }
         }
     },
