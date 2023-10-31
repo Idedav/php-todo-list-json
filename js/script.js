@@ -48,6 +48,15 @@ createApp({
                     this.isErrorDelete = false
                 },3000)
             }
+        },
+
+        toggleDone(index){
+            const data = new FormData();
+            data.append('taskIsDone', index);
+            axios.post(this.apiUrl, data)
+            .then(res =>{
+                this.list = res.data
+            })
         }
     },
     mounted(){

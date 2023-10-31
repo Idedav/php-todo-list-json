@@ -23,6 +23,14 @@ if(isset($_POST['taskToDelete'])){
     file_put_contents('../json/toDoList.json', json_encode($list));
 }
 
+if(isset($_POST['taskIsDone'])){
+    $taskIsDone = $_POST['taskIsDone'];
+    
+    $taskIsDone['isDone'] = !$taskIsDone['isDone'];
+
+    file_put_contents('../json/toDoList.json', json_encode($list));
+}
+
 header('Content-Type: application/json');
 echo json_encode($list);
 ?>
