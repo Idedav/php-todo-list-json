@@ -24,9 +24,11 @@ if(isset($_POST['taskToDelete'])){
 }
 
 if(isset($_POST['taskIsDone'])){
-    $taskIsDone = $_POST['taskIsDone'];
-    
-    $taskIsDone['isDone'] = !$taskIsDone['isDone'];
+
+    $list[$_POST['taskIsDone']]['isDo'] = !$list[$_POST['taskIsDone']]['isDo'];
+
+
+
 
     file_put_contents('../json/toDoList.json', json_encode($list));
 }
